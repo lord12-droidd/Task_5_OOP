@@ -24,7 +24,7 @@ namespace Task_5
                     }
                     catch (FormatException)
                     {
-                        Console.WriteLine("Ви ввели некоректне значення у файлі 'x.txt'");
+                        Console.WriteLine("Ви ввели некоректне(-ні) значення у файлі 'x.txt'");
                         Console.ReadKey();
                         Environment.Exit(0);
                     }
@@ -43,7 +43,7 @@ namespace Task_5
                     }
                     catch (FormatException)
                     {
-                        Console.WriteLine("Ви ввели некоректне значення у файлі 'y.txt'");
+                        Console.WriteLine("Ви ввели некоректне(-ні) значення у файлі 'y.txt'");
                         Console.ReadKey();
                         Environment.Exit(0);
                     }
@@ -91,6 +91,8 @@ namespace Task_5
         {
             try
             {
+                var lines = File.ReadAllLines("x.txt").Where(arg => !string.IsNullOrWhiteSpace(arg));
+                File.WriteAllLines("x.txt", lines);
                 n_x = File.ReadAllLines("x.txt").Length;
                 if(n_x == 0)
                 {
@@ -112,6 +114,8 @@ namespace Task_5
         {
             try
             {
+                var lines = File.ReadAllLines("y.txt").Where(arg => !string.IsNullOrWhiteSpace(arg));
+                File.WriteAllLines("y.txt", lines);
                 n_y = File.ReadAllLines("y.txt").Length;
                 if (n_y == 0)
                 {
